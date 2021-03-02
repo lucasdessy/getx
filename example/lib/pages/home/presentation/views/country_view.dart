@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class CountryView extends GetWidget<HomeController> {
+class CountryView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,27 +22,29 @@ class CountryView extends GetWidget<HomeController> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-              title: Text("Corona By Country"),
+              title: Text('corona_by_country'.tr),
               backgroundColor: Colors.transparent,
               elevation: 0,
               centerTitle: true,
             ),
             body: Center(
               child: ListView.builder(
-                  itemCount: controller.cases.value.countries.length,
+                  itemCount: controller.state.countries.length,
                   itemBuilder: (context, index) {
-                    final country = controller.cases.value.countries[index];
+                    final country = controller.state.countries[index];
                     return ListTile(
                       onTap: () {
-                        Get.toNamed('/details', arguments: country);
+                        Get.toNamed('/home/country/details',
+                            arguments: country);
                       },
                       trailing: CircleAvatar(
                         backgroundImage: NetworkImage(
                             "https://flagpedia.net/data/flags/normal/${country.countryCode.toLowerCase()}.png"),
                       ),
                       title: Text(country.country),
-                      subtitle:
-                          Text("Total infecteds: ${country.totalConfirmed}"),
+                      subtitle: Text(
+                          // ignore: lines_longer_than_80_chars
+                          '${'total_infecteds'.tr}${' ${country.totalConfirmed}'}'),
                     );
                   }),
             ),

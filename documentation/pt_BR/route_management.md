@@ -195,12 +195,12 @@ Get.bottomSheet(
         ListTile(
           leading: Icon(Icons.music_note),
           title: Text('Música'),
-          onTap: () => {}
+          onTap: () {}
         ),
         ListTile(
           leading: Icon(Icons.videocam),
           title: Text('Vídeo'),
-          onTap: () => {},
+          onTap: () {},
         ),
       ],
     ),
@@ -242,6 +242,23 @@ void main() {
         GetPage(name: '/login', page: () => Login()),
         GetPage(name: '/cadastro', page: () => Cadastro(), transition: Transition.cupertino),
       ]
+    )
+  );
+}
+```
+
+Para lidar com a navegação para rotas não definidas (erro 404), você pode definir uma página unknownRoute em GetMaterialApp.
+
+```dart
+void main() {
+  runApp(
+    GetMaterialApp(
+      unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => MyHomePage()),
+        GetPage(name: '/second', page: () => Second()),
+      ],
     )
   );
 }

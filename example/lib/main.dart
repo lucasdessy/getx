@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'lang/translation_service.dart';
 import 'routes/app_pages.dart';
 import 'shared/logger/logger_utils.dart';
 
@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
       logWriterCallback: Logger.write,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      locale: TranslationService.locale,
+      fallbackLocale: TranslationService.fallbackLocale,
+      translations: TranslationService(),
     );
   }
 }

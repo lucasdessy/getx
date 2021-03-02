@@ -1,4 +1,6 @@
-export 'src/utils/extensions/export.dart';
-export 'src/utils/platform/platform.dart';
-export 'src/utils/queue/get_queue.dart';
-export 'src/utils/regex/get_utils.dart';
+/// Get utils is a set of tools that allows you to access high-level
+/// APIs and obtain validation tools for Flutter and GetX
+library utils;
+
+export 'get_core/get_core.dart';
+export 'get_utils/get_utils.dart';

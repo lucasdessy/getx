@@ -1,3 +1,6 @@
-export 'src/instance/extension_instance.dart';
-export 'src/instance/get_instance.dart';
-export 'src/navigation/routes/bindings_interface.dart';
+/// Get Instance Manager is a modern and intelligent dependency injector
+/// that injects and removes dependencies seasonally.
+library instance_manager;
+
+export 'get_core/get_core.dart';
+export 'get_instance/get_instance.dart';

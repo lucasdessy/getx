@@ -21,17 +21,14 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("Corona Virus"),
+          title: Text('covid'.tr),
           backgroundColor: Colors.white10,
           elevation: 0,
           centerTitle: true,
         ),
         body: Center(
-          child: Obx(
-            () {
-              final status = controller.status.value;
-              if (status == Status.loading) return CircularProgressIndicator();
-              if (status == Status.error) return Text('Error on connection :(');
+          child: controller.obx(
+            (state) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -39,26 +36,26 @@ class HomeView extends GetView<HomeController> {
                     height: 100,
                   ),
                   Text(
-                    "Total Confirmed",
+                    'total_confirmed'.tr,
                     style: TextStyle(
                       fontSize: 30,
                     ),
                   ),
                   Text(
-                    '${controller.cases.value.global.totalConfirmed}',
+                    '${state.global.totalConfirmed}',
                     style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    "Total Deaths",
+                    'total_deaths'.tr,
                     style: TextStyle(
                       fontSize: 30,
                     ),
                   ),
                   Text(
-                    '${controller.cases.value.global.totalDeaths}',
+                    '${state.global.totalDeaths}',
                     style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -71,10 +68,10 @@ class HomeView extends GetView<HomeController> {
                     ),
                     shape: StadiumBorder(),
                     onPressed: () {
-                      Get.toNamed('/country');
+                      Get.toNamed('/home/country');
                     },
                     child: Text(
-                      "Fetch by country",
+                      'fetch_country'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   )
